@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6102B93725C464F300997E4F /* FourSquareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102B93625C464F300997E4F /* FourSquareManager.swift */; };
 		61ECC01A25C454D7007F9B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ECC01925C454D7007F9B70 /* AppDelegate.swift */; };
 		61ECC01C25C454D7007F9B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ECC01B25C454D7007F9B70 /* SceneDelegate.swift */; };
 		61ECC01E25C454D7007F9B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ECC01D25C454D7007F9B70 /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 		61ECC03125C454D8007F9B70 /* BeanioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ECC03025C454D8007F9B70 /* BeanioTests.swift */; };
 		61ECC03C25C454D8007F9B70 /* BeanioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ECC03B25C454D8007F9B70 /* BeanioUITests.swift */; };
 		61ECC05325C4558E007F9B70 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ECC05225C4558E007F9B70 /* Credentials.swift */; };
+		61ECC05825C45AC8007F9B70 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ECC05725C45AC8007F9B70 /* UserLocationManager.swift */; };
+		61ECC06025C45F9C007F9B70 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ECC05F25C45F9C007F9B70 /* ErrorHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6102B93625C464F300997E4F /* FourSquareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareManager.swift; sourceTree = "<group>"; };
 		61ECC01625C454D7007F9B70 /* Beanio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beanio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61ECC01925C454D7007F9B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61ECC01B25C454D7007F9B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		61ECC03B25C454D8007F9B70 /* BeanioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanioUITests.swift; sourceTree = "<group>"; };
 		61ECC03D25C454D8007F9B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61ECC05225C4558E007F9B70 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		61ECC05725C45AC8007F9B70 /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
+		61ECC05F25C45F9C007F9B70 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				61ECC05025C45517007F9B70 /* FoursquareAPI */,
+				61ECC05725C45AC8007F9B70 /* UserLocationManager.swift */,
+				61ECC05F25C45F9C007F9B70 /* ErrorHandler.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -167,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				61ECC05225C4558E007F9B70 /* Credentials.swift */,
+				6102B93625C464F300997E4F /* FourSquareManager.swift */,
 			);
 			path = FoursquareAPI;
 			sourceTree = "<group>";
@@ -311,6 +320,9 @@
 			files = (
 				61ECC01E25C454D7007F9B70 /* ViewController.swift in Sources */,
 				61ECC01A25C454D7007F9B70 /* AppDelegate.swift in Sources */,
+				61ECC05825C45AC8007F9B70 /* UserLocationManager.swift in Sources */,
+				6102B93725C464F300997E4F /* FourSquareManager.swift in Sources */,
+				61ECC06025C45F9C007F9B70 /* ErrorHandler.swift in Sources */,
 				61ECC05325C4558E007F9B70 /* Credentials.swift in Sources */,
 				61ECC01C25C454D7007F9B70 /* SceneDelegate.swift in Sources */,
 			);
