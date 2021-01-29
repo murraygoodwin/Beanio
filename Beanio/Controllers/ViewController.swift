@@ -8,59 +8,30 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
   
-  private let coreLocationManager = CLLocationManager()
-  private let errorHandler = ErrorHandler()
+  private var viewModel = ViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    coreLocationManager.delegate = self
+    viewModel.viewController = self
+    viewModel.delegate = self
   }
   
-  // MARK: - Navigation Bar Items
+  // MARK: - Navigation Bar Actions
   @IBAction func getLocationButtonPressed(_ sender: UIBarButtonItem) {
-    
-    let userLocationManager = UserLocationManager(coreLocationManager: coreLocationManager)
-    
-    do {
-      try userLocationManager.getCurrentLocation()
-      
-    } catch ErrorHandler.ErrorType.locationServicesDisabled {
-      errorHandler.handleError(errorType: .locationServicesDisabled, viewController: self)
-      
-    } catch ErrorHandler.ErrorType.locationServicesRestricted {
-      errorHandler.handleError(errorType: .locationServicesRestricted, viewController: self)
-      
-    } catch {
-      errorHandler.handleError(errorType: .other, viewController: self)
-    }
+    viewModel.refreshData()
   }
 }
 
-// MARK: - CoreLocationManager Delegate
-extension ViewController: CLLocationManagerDelegate {
+// MARK: - ViewModel Delegate
+extension ViewController: ViewModelDelegate {
   
-  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-    print(manager.authorizationStatus)
+  func viewModel(_ manager: ViewModel, didUpdateUserLocation: CLLocation) {
+    print("The User Location was updated in the ViewController")
   }
   
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    
-    let userLocationManager = UserLocationManager(coreLocationManager: coreLocationManager)
-    
-    // Prevent multiple delegate calls from the same search:
-    if let foundLocation = locations.last, userLocationManager.coreLocationDidFinishRequestingALocation == false {
-      userLocationManager.coreLocationDidFinishRequestingALocation = true
-      manager.stopUpdatingLocation()
-      
-      let locationToBeSaved = CLLocation(latitude: foundLocation.coordinate.latitude, longitude: foundLocation.coordinate.longitude)
-      print(locationToBeSaved.debugDescription)
-    }
-  }
-  
-  //FIXME: In production, I would handle the various types of error that could be returned here (https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423786-locationmanager).
-  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    errorHandler.handleError(errorType: .coreLocationError, viewController: self)
+  func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShop]) {
+    print("The Coffee Shop Data was updated in the ViewController")
   }
 }
