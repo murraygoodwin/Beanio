@@ -12,12 +12,13 @@ final class ErrorHandler {
   
   enum ErrorType: Error {
     case coreLocationError
+    case errorAccessingTheAPI
     case locationServicesDisabled
     case locationServicesRestricted
     case other
   }
     
-  func handleError(errorType: ErrorType,
+  func presentError(errorType: ErrorType,
                    viewController: UIViewController) {
     
     var errorTitle: String?
@@ -41,11 +42,10 @@ final class ErrorHandler {
       errorTitle = "Please accept our apologies."
       errorMessage = "We are currently unable to help you. Hopefully we will be back working again soon. Please look out for future app updates which might help fix the problem."
       
-//    case .errorAccessingTheAPI:
-//      errorTitle = "Please check your connection."
-//      errorMessage = "We were unable to access the weather service. Please make sure your internet connection is working correctly."
-//
-//
+    case .errorAccessingTheAPI:
+      errorTitle = "Please check your connection."
+      errorMessage = "We were unable to access the FourSquare service. Please make sure your internet connection is working correctly."
+
 //    case .connectivityIssue:
 //      errorTitle = "Please accept our apologies."
 //      errorMessage = "We are currently unable to help you. Hopefully we will be back working again soon. Please look out for future app updates which might help fix the problem."
@@ -56,10 +56,10 @@ final class ErrorHandler {
       
       let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "Okay", style: .default))
+      
       DispatchQueue.main.async {
         viewController.present(alert, animated: true)
       }
-      
     }
   }
 }
