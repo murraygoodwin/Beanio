@@ -31,7 +31,7 @@ extension ViewController: ViewModelDelegate {
     print("The User Location was updated in the ViewController")
   }
   
-  func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShopData]) {
+  func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShop]) {
     print("The Coffee Shop Data was updated in the ViewController")
   }
 }

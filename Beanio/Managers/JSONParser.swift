@@ -10,48 +10,41 @@ import CoreLocation
 
 struct JSONParser {
   
-  func parseJSON(data: Data) {
+  func parseCoffeeShopJSON(_ data: Data) throws -> [CoffeeShop]? {
     
-  }
-  
-  // TODO: Maybe make this throwing?
-  func parseCoffeeShopJSON(_ data: Data) -> CoffeeShop? {
     do {
     let coffeeShopData = try JSONDecoder().decode(CoffeeShopData.self, from: data)
       
-      //TODO: Handle this better.
       guard coffeeShopData.meta.code == 200 else {
-        fatalError("Error with the JSON.")
+        throw ErrorHandler.ErrorType.errorAccessingTheAPI
       }
       
-      let name = coffeeShopData.response.groups[0].items[0].venue.name
-      let latitude = coffeeShopData.response.groups[0].items[0].venue.location.lat
-      let longitude = coffeeShopData.response.groups[0].items[0].venue.location.lng
-      let distance = coffeeShopData.response.groups[0].items[0].venue.location.distance
+      // TODO: Check whether this could ever be nil / zero and handle appropriately (e.g. searching in the sea)... might not even be needed as we can return nil...
+      let items = coffeeShopData.response.groups[0].items
+            
+//      guard items != nil else {
+//        throw ErrorHandler.ErrorType.zeroResultsReturned
+//      }
       
-      let coffeeShop = CoffeeShop(name: name,
-                                  location: CLLocation(latitude: latitude, longitude: longitude),
-                                  distance: distance)
+      var coffeeShops: [CoffeeShop] = []
       
-      // Currently returns a single one
-      return coffeeShop
+      for item in items {
+        let name = item.venue.name
+        let latitude = item.venue.location.lat
+        let longitude = item.venue.location.lng
+        let distance = item.venue.location.distance
+        
+        coffeeShops.append(CoffeeShop(name: name,
+                                    location: CLLocation(latitude: latitude, longitude: longitude),
+                                    distance: distance))
+      }
       
-      
-      
-      
+      return coffeeShops
+            
     } catch {
-      fatalError("Error decoding JSON.")
+      throw ErrorHandler.ErrorType.other
     }
       
-      
-   
-//    guard coffeeShopData.results.count > 0 else {
-//      didFailWithError(reason: .zeroCoffeeShopsReturnedFromSearch)
-//      return nil
-//    }
-
-    
-//    return coffeeShopData.response.map { CoffeeShop(response: $0) }
   }
   
 }

@@ -13,7 +13,7 @@ import UIKit
 
 protocol ViewModelDelegate: AnyObject {
   func viewModel(_ manager: ViewModel, didUpdateUserLocation: CLLocation)
-  func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShopData])
+  func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShop])
 }
 
 class ViewModel: NSObject {
@@ -31,7 +31,7 @@ class ViewModel: NSObject {
     }
   }
   
-  var coffeeShops: [CoffeeShopData] = [] {
+  var coffeeShops: [CoffeeShop] = [] {
     didSet {
       delegate?.viewModel(self, didUpdateCoffeeShops: coffeeShops)
       print("The Coffee Shop Data was updated in the ViewModel")
@@ -83,23 +83,24 @@ extension ViewModel: CLLocationManagerDelegate {
       do {
         try fourSquareManager.downloadVenueDataNearLocation(location: userLocation) { (data) in
           
-         // Check the data isn't nil (not really needed since already checked).
-          // Then parse the JSON...
-          
-          guard let data = data else {
-            fatalError("No data returned from FourSquare API.")
+          // Check the data isn't nil (not really needed since already checked).
+           // Then parse the JSON...
+           
+           guard let data = data else {
+             fatalError("No data returned from FourSquare API.")
+           }
+                     
+          do {
+            let jsonParser = JSONParser()
+            if let parsedShops = try jsonParser.parseCoffeeShopJSON(data) {
+              self.coffeeShops = parsedShops
+            }
+          } catch {
+            self.errorHandler.presentError(errorType: .other, viewController: self.viewController!)
           }
-          
-          let jsonParser = JSONParser()
-          let coffeeShop = jsonParser.parseCoffeeShopJSON(data)
-          print(coffeeShop.debugDescription)
-
-          
-          print("Data received...")
         }
-        
       } catch ErrorHandler.ErrorType.errorAccessingTheAPI {
-        errorHandler.presentError(errorType: .errorAccessingTheAPI, viewController: viewController!)
+        self.errorHandler.presentError(errorType: .errorAccessingTheAPI, viewController: self.viewController!)
         
       } catch {
         errorHandler.presentError(errorType: .other, viewController: viewController!)
