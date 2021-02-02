@@ -14,6 +14,7 @@ final class UserLocationManager {
   
   init(coreLocationManager: CLLocationManager) {
     self.coreLocationManager = coreLocationManager
+    self.coreLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
   }
   
   // Prevent repeated delegate calls for multiple simultaneous location updates.

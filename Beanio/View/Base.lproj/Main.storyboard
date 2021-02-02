@@ -26,6 +26,42 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w4v-oB-YPh">
                                 <rect key="frame" x="0.0" y="408" width="414" height="454"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="venueListingCell" rowHeight="176" id="35K-Yr-NFs" customClass="VenueListingCell" customModule="Beanio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="176"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="35K-Yr-NFs" id="hBS-fA-Xad">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGV-Vd-KoW" userLabel="Venue Name">
+                                                    <rect key="frame" x="40" y="22" width="97" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aye-AO-vsk" userLabel="Distance">
+                                                    <rect key="frame" x="336" y="11" width="67" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="cGV-Vd-KoW" secondAttribute="bottom" constant="20" id="88C-uz-SIe"/>
+                                                <constraint firstItem="Aye-AO-vsk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cGV-Vd-KoW" secondAttribute="trailing" constant="20" id="BAv-di-SJo"/>
+                                                <constraint firstItem="Aye-AO-vsk" firstAttribute="top" secondItem="hBS-fA-Xad" secondAttribute="top" constant="11" id="hfL-iI-6Ma"/>
+                                                <constraint firstItem="cGV-Vd-KoW" firstAttribute="top" secondItem="hBS-fA-Xad" secondAttribute="topMargin" constant="11" id="qVG-pa-5bS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Aye-AO-vsk" secondAttribute="trailing" constant="11" id="usw-ui-eRX"/>
+                                                <constraint firstItem="cGV-Vd-KoW" firstAttribute="leading" secondItem="hBS-fA-Xad" secondAttribute="leadingMargin" constant="20" id="wS2-v1-iYX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="distanceLabel" destination="Aye-AO-vsk" id="mjd-gO-pYE"/>
+                                            <outlet property="nameLabel" destination="cGV-Vd-KoW" id="XEI-lo-n8z"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nL1-8d-7LD" userLabel="Warning Message View">
                                 <rect key="frame" x="0.0" y="338" width="414" height="70"/>
@@ -57,6 +93,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="w4v-oB-YPh" id="qEk-QU-ebq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

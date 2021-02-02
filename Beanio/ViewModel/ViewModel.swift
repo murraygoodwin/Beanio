@@ -82,10 +82,8 @@ extension ViewModel: CLLocationManagerDelegate {
       
       do {
         try fourSquareManager.downloadVenueDataNearLocation(location: userLocation) { (data) in
-          
-          // Check the data isn't nil (not really needed since already checked).
-           // Then parse the JSON...
-           
+
+          //TODO: Handle this better.
            guard let data = data else {
              fatalError("No data returned from FourSquare API.")
            }

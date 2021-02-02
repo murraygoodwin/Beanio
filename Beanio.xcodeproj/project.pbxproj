@@ -10,6 +10,7 @@
 		6102B93725C464F300997E4F /* FourSquareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102B93625C464F300997E4F /* FourSquareManager.swift */; };
 		6102B94125C46A4B00997E4F /* CoffeeShopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102B94025C46A4B00997E4F /* CoffeeShopData.swift */; };
 		6102B94625C46A9B00997E4F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102B94525C46A9B00997E4F /* ViewModel.swift */; };
+		613B3B8925C970F400948CAD /* VenueListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B3B8825C970F400948CAD /* VenueListingCell.swift */; };
 		61D64D6825C81DEC00B6830D /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D64D6725C81DEC00B6830D /* JSONParser.swift */; };
 		61D64D6D25C81FA400B6830D /* sampleJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 61D64D6C25C81FA400B6830D /* sampleJSON.json */; };
 		61D64D7825C8242600B6830D /* CoffeeShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D64D7725C8242600B6830D /* CoffeeShop.swift */; };
@@ -47,6 +48,7 @@
 		6102B93625C464F300997E4F /* FourSquareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareManager.swift; sourceTree = "<group>"; };
 		6102B94025C46A4B00997E4F /* CoffeeShopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopData.swift; sourceTree = "<group>"; };
 		6102B94525C46A9B00997E4F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		613B3B8825C970F400948CAD /* VenueListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListingCell.swift; sourceTree = "<group>"; };
 		61D64D6725C81DEC00B6830D /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		61D64D6C25C81FA400B6830D /* sampleJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleJSON.json; sourceTree = "<group>"; };
 		61D64D7725C8242600B6830D /* CoffeeShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShop.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		61ECC04E25C454FA007F9B70 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				613B3B8825C970F400948CAD /* VenueListingCell.swift */,
 				61ECC01F25C454D7007F9B70 /* Main.storyboard */,
 				61ECC02425C454D8007F9B70 /* LaunchScreen.storyboard */,
 			);
@@ -336,6 +339,7 @@
 			files = (
 				6102B94625C46A9B00997E4F /* ViewModel.swift in Sources */,
 				6102B94125C46A4B00997E4F /* CoffeeShopData.swift in Sources */,
+				613B3B8925C970F400948CAD /* VenueListingCell.swift in Sources */,
 				61ECC01E25C454D7007F9B70 /* ViewController.swift in Sources */,
 				61ECC01A25C454D7007F9B70 /* AppDelegate.swift in Sources */,
 				61ECC05825C45AC8007F9B70 /* UserLocationManager.swift in Sources */,
@@ -450,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -505,7 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
