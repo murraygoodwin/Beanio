@@ -49,6 +49,7 @@
 		6102B94025C46A4B00997E4F /* CoffeeShopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopData.swift; sourceTree = "<group>"; };
 		6102B94525C46A9B00997E4F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		613B3B8825C970F400948CAD /* VenueListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListingCell.swift; sourceTree = "<group>"; };
+		614277CC25C9DFC100715A15 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		61D64D6725C81DEC00B6830D /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		61D64D6C25C81FA400B6830D /* sampleJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleJSON.json; sourceTree = "<group>"; };
 		61D64D7725C8242600B6830D /* CoffeeShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShop.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		61ECC00D25C454D7007F9B70 = {
 			isa = PBXGroup;
 			children = (
+				614277CC25C9DFC100715A15 /* README.md */,
 				61ECC01825C454D7007F9B70 /* Beanio */,
 				61ECC02F25C454D8007F9B70 /* BeanioTests */,
 				61ECC03A25C454D8007F9B70 /* BeanioUITests */,

@@ -12,12 +12,16 @@ final class ViewController: UIViewController {
   
   private var viewModel = ViewModel()
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var warningText: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
+    tableView.backgroundColor = .white
+    
     viewModel.viewController = self
     viewModel.delegate = self
+    warningText.text = viewModel.warningText
   }
   
   // MARK: - Navigation Bar Actions
@@ -38,8 +42,9 @@ extension ViewController: UITableViewDataSource {
 
     let coffeeShop = viewModel.coffeeShops[indexPath.row]
     cell.nameLabel.text = coffeeShop.name
-    cell.distanceLabel.text = "\(coffeeShop.distance)"
-    
+    cell.distanceLabel.text = "\(coffeeShop.distance)m"
+    cell.roundedTile.layer.cornerRadius = 20
+
     return cell
   }
 }
@@ -48,13 +53,19 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: ViewModelDelegate {
   
   func viewModel(_ manager: ViewModel, didUpdateUserLocation: CLLocation) {
-    print("The User Location was updated in the ViewController")
   }
   
   func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShop]) {
     DispatchQueue.main.async {
       self.tableView.reloadData()
     }
-    print("The Coffee Shop Data was updated in the ViewController")
+  }
+  
+  func viewModel(_ manager: ViewModel, didUpdateWarningText: String?) {
+    DispatchQueue.main.async {
+      
+      //TODO: Hide the warning text if it's blank and only show it if there's a value.
+      self.warningText.text = didUpdateWarningText
+    }
   }
 }

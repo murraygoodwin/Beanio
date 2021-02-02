@@ -14,6 +14,7 @@ import UIKit
 protocol ViewModelDelegate: AnyObject {
   func viewModel(_ manager: ViewModel, didUpdateUserLocation: CLLocation)
   func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShop])
+  func viewModel(_ manager: ViewModel, didUpdateWarningText: String?)
 }
 
 class ViewModel: NSObject {
@@ -27,14 +28,18 @@ class ViewModel: NSObject {
   var userLocation: CLLocation = CLLocation(latitude: 51.5154856, longitude: -0.1418396) {
     didSet {
       delegate?.viewModel(self, didUpdateUserLocation: userLocation)
-      print("The User Location was updated in the ViewModel")
     }
   }
   
   var coffeeShops: [CoffeeShop] = [] {
     didSet {
       delegate?.viewModel(self, didUpdateCoffeeShops: coffeeShops)
-      print("The Coffee Shop Data was updated in the ViewModel")
+    }
+  }
+  
+  var warningText: String? {
+    didSet {
+      delegate?.viewModel(self, didUpdateWarningText: warningText)
     }
   }
   
@@ -58,7 +63,6 @@ class ViewModel: NSObject {
       errorHandler.presentError(errorType: .other, viewController: viewController!)
     }
   }
-  
 }
 
 // MARK: - CoreLocationManager Delegate
@@ -90,9 +94,13 @@ extension ViewModel: CLLocationManagerDelegate {
                      
           do {
             let jsonParser = JSONParser()
-            if let parsedShops = try jsonParser.parseCoffeeShopJSON(data) {
-              self.coffeeShops = parsedShops
+            
+            if let parsedShops = try jsonParser.parseCoffeeShopJSON(data).coffeeShops {
+              self.coffeeShops = parsedShops.sorted(by: { $0.distance < $1.distance })
             }
+            
+            self.warningText = try jsonParser.parseCoffeeShopJSON(data).warningText
+            
           } catch {
             self.errorHandler.presentError(errorType: .other, viewController: self.viewController!)
           }

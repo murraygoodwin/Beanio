@@ -18,10 +18,15 @@ struct CoffeeShopData: Decodable {
   
   struct Response: Decodable {
     let groups: [Group]
+    let warning: Warning?
   }
   
   struct Group: Decodable {
     let items: [Item]
+  }
+  
+  struct Warning: Decodable {
+    let text: String?
   }
 
   struct Item: Decodable {

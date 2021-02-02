@@ -10,7 +10,7 @@ import CoreLocation
 
 struct JSONParser {
   
-  func parseCoffeeShopJSON(_ data: Data) throws -> [CoffeeShop]? {
+  func parseCoffeeShopJSON(_ data: Data) throws -> (coffeeShops: [CoffeeShop]?, warningText: String?) {
     
     do {
     let coffeeShopData = try JSONDecoder().decode(CoffeeShopData.self, from: data)
@@ -18,6 +18,8 @@ struct JSONParser {
       guard coffeeShopData.meta.code == 200 else {
         throw ErrorHandler.ErrorType.errorAccessingTheAPI
       }
+      
+      let warningText = coffeeShopData.response.warning?.text
       
       // TODO: Check whether this could ever be nil / zero and handle appropriately (e.g. searching in the sea)... might not even be needed as we can return nil...
       let items = coffeeShopData.response.groups[0].items
@@ -39,7 +41,7 @@ struct JSONParser {
                                     distance: distance))
       }
       
-      return coffeeShops
+      return (coffeeShops, warningText)
             
     } catch {
       throw ErrorHandler.ErrorType.other
