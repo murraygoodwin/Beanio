@@ -22,7 +22,7 @@ struct CoffeeShopData: Decodable {
   }
   
   struct Group: Decodable {
-    let items: [Item]
+    let items: [Item]?
   }
   
   struct Warning: Decodable {

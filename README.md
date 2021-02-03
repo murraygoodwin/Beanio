@@ -27,13 +27,13 @@ I broke the project down into steps on a Trello board, which allowed me to track
 18. Write README.md
 
 
-## Notes on user Interface Design
-Please note that I have not focused on the user interface in this example, since I have an existing published 'coffee shop listing app' available on the App Store, which I think gives a good indication of my abilities around UI design. It seemed silly to duplicate effort for a demo project where there is so much overlap.
+## Notes on User Interface Design
+Please note that I have not focused on the user interface in this example, since I have an existing published 'coffee shop listing app' available on the App Store, which I think gives a better indication of my abilities around UI design. It seemed silly to duplicate effort for a demo project where there is so much overlap.
 
 ARTISAN is available here:
 https://apps.apple.com/us/app/artisan-cafes-coffee-nearby/id1521699791
 
-ARTISAN uses much the same approach as in this project – although it uses the Google Places and Maps APIs – and I have given a lot of thought to the user interface, journeys and experience, so it seemed more sensible to point you to that app instead.
+ARTISAN uses much the same approach as in this project – although it uses the Google Places and Maps APIs in place of FourSquare. I have given a lot of thought to the user interface, journeys and experience, so it seemed more sensible to point you to that app instead.
 
 In addition to a simple tableView, ARTISAN also incorporates functionality to: 
 - overlay search results onto a map
@@ -42,5 +42,7 @@ In addition to a simple tableView, ARTISAN also incorporates functionality to:
 - swipe down to refresh
 - get directions to each venue
 - view additional metadata for each listing, including Reviews, Photos and Open/Closed status
+
+I recently refactored ARTISAN around MVVM and I intend to style the tableView a bit more than it is currently in the coming weeks.
 
 I have included data for latitude and longitude in the listings objects within this demo to allow for that functionality to be extended.

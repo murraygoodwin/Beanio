@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VenueListingCell: UITableViewCell {
+final class VenueListingCell: UITableViewCell {
 
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var distanceLabel: UILabel!

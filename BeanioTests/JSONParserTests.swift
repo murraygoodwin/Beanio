@@ -20,10 +20,26 @@ class JSONParserTests: XCTestCase {
     sut = nil
   }
   
-  func testParseCoffeeShopJSON() throws {
+  func testParseCoffeeShopJSONWithNormalResults() throws {
     
-    let testJSON = try Data(contentsOf: Bundle.main.url(forResource: "sampleJSON", withExtension: "json")!)
-    XCTAssert(try sut.parseCoffeeShopJSON(testJSON).coffeeShops!.count == 30)
-    XCTAssertNil(try sut.parseCoffeeShopJSON(testJSON).warningText)
+    do {
+      let testJSON = try Data(contentsOf: Bundle.main.url(forResource: "sampleJSON", withExtension: "json")!)
+      XCTAssert(try sut.parseCoffeeShopJSON(testJSON).coffeeShops!.count == 30)
+      XCTAssertNil(try sut.parseCoffeeShopJSON(testJSON).warningText)
+    } catch {
+      XCTFail()
+    }
+  }
+  
+  func testParseCoffeeShopJSONWithWarning() throws {
+    
+    do {
+      let testJSON = try Data(contentsOf: Bundle.main.url(forResource: "sampleJSONwithWarningMessage", withExtension: "json")!)
+      XCTAssert(try sut.parseCoffeeShopJSON(testJSON).coffeeShops!.count == 0)
+      XCTAssertNotNil(try sut.parseCoffeeShopJSON(testJSON).warningText)
+      XCTAssert(try sut.parseCoffeeShopJSON(testJSON).warningText == "There aren't a lot of results near you. Try something more general, reset your filters, or expand the search area.")
+    } catch {
+      XCTFail()
+    }
   }
 }

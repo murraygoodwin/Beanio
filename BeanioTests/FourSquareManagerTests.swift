@@ -35,31 +35,13 @@ class FourSquareManagerTests: XCTestCase {
     XCTAssertTrue(UIApplication.shared.canOpenURL(generatedURL!))
   }
   
-  func testURLisValid() {
-    
-    let urlString = "jfwebjewvawe"
-    
-    if let url = NSURL(string: urlString) {
-                print(UIApplication.shared.canOpenURL(url as URL))
-            }
-  }
-  
   func testDownloadVenueDataNearLocation() {
     
     let testLocation = CLLocation(latitude: 51.5154856, longitude: -0.1418396)
-    
+  
     sut.downloadVenueDataNearLocation(location: testLocation) { (data) in
-      XCTAssertNotNil(data!)
+      // FIXME: I have been trying (and failing!) to find a way to test for nil data values being retured (e.g. in case of loss of a search with no connectivity), but it always seems to pass. Any feedback welcome!
+      XCTAssert(data?.isEmpty == false)
     }
   }
-  
-  
-  
-  func testPerformanceExample() throws {
-    // This is an example of a performance test case.
-    self.measure {
-      // Put the code you want to measure the time of here.
-    }
-  }
-  
 }

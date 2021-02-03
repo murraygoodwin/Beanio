@@ -17,7 +17,7 @@ protocol ViewModelDelegate: AnyObject {
   func viewModel(_ manager: ViewModel, didUpdateWarningText: String?)
 }
 
-class ViewModel: NSObject {
+final class ViewModel: NSObject {
   
   private let coreLocationManager = CLLocationManager()
   private let errorHandler = ErrorHandler()
@@ -110,6 +110,7 @@ extension ViewModel: CLLocationManagerDelegate {
   }
 }
 
+// MARK: - FourSquare delegate
 extension ViewModel: FourSquareMangerDelegate {
   
   func fourSquareManager(_ manager: FourSquareManager, didFailWithError: ErrorHandler.ErrorType) {

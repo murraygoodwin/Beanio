@@ -11,13 +11,19 @@ import CoreLocation
 final class ViewController: UIViewController {
   
   private var viewModel = ViewModel()
+  @IBOutlet weak var loadingOverlay: UIView!
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var warningMessageView: UIView!
   @IBOutlet weak var warningText: UILabel!
-  
+    
+  enum ViewMode {
+    case standby, loading
+  }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
-    tableView.backgroundColor = .lightGray
+    tableView.backgroundColor = .clear
     
     viewModel.viewController = self
     viewModel.delegate = self
@@ -26,7 +32,20 @@ final class ViewController: UIViewController {
   
   // MARK: - Navigation Bar Actions
   @IBAction func getLocationButtonPressed(_ sender: UIBarButtonItem) {
+    updateUI(mode: .loading)
     viewModel.refreshData()
+  }
+  
+  private func updateUI(mode: ViewMode) {
+    
+    DispatchQueue.main.async {
+      switch mode {
+      case .standby:
+        self.loadingOverlay.isHidden = true
+      case .loading:
+        self.loadingOverlay.isHidden = false
+      }
+    }
   }
 }
 
@@ -53,18 +72,19 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: ViewModelDelegate {
   
   func viewModel(_ manager: ViewModel, didUpdateUserLocation: CLLocation) {
+    // Placeholder to allow for a map update.
   }
   
   func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShop]) {
     DispatchQueue.main.async {
+      self.updateUI(mode: .standby)
       self.tableView.reloadData()
     }
   }
   
   func viewModel(_ manager: ViewModel, didUpdateWarningText: String?) {
     DispatchQueue.main.async {
-      
-      //TODO: Hide the warning text if it's blank and only show it if there's a value.
+      self.warningMessageView.isHidden = didUpdateWarningText == nil ? true : false
       self.warningText.text = didUpdateWarningText
     }
   }
