@@ -45,9 +45,12 @@ class FourSquareManager {
     
     let session = URLSession(configuration: .default)
     let task = session.dataTask(with: url) { [weak self] (data, response, error) in
+      
       guard let self = self else { return }
       
-      guard let data = data, error == nil else {
+      let response = response as! HTTPURLResponse?
+      
+      guard let data = data, error == nil, response?.statusCode == 200 else {
         self.delegate?.fourSquareManager(self, didFailWithError: .errorAccessingTheAPI)
         return
       }

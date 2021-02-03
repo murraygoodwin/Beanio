@@ -20,7 +20,9 @@ final class ErrorHandler {
   }
     
   func presentError(errorType: ErrorType,
-                   viewController: UIViewController) {
+                   viewController: UIViewController?) {
+    
+    guard let viewController = viewController else { return }
     
     var errorTitle: String?
     var errorMessage: String?
@@ -50,11 +52,6 @@ final class ErrorHandler {
     case .other:
       errorTitle = "Please accept our apologies."
       errorMessage = "We are currently unable to help you. Hopefully we will be back working again soon. Please look out for future app updates which might help fix the problem."
-      
-//    case .connectivityIssue:
-//      errorTitle = "Please accept our apologies."
-//      errorMessage = "We are currently unable to help you. Hopefully we will be back working again soon. Please look out for future app updates which might help fix the problem."
-      
     }
     
     if let _ = errorMessage, let errorTitle = errorTitle {

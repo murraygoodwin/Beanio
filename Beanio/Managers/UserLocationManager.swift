@@ -28,6 +28,7 @@ final class UserLocationManager {
     switch coreLocationManager.authorizationStatus {
     
     case .denied: throw ErrorHandler.ErrorType.locationServicesDisabled
+      
     case .restricted: throw ErrorHandler.ErrorType.locationServicesRestricted
       
     case .notDetermined: coreLocationManager.requestWhenInUseAuthorization()

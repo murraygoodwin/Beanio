@@ -24,9 +24,9 @@ struct JSONParser {
       // TODO: Check whether this could ever be nil / zero and handle appropriately (e.g. searching in the sea)... might not even be needed as we can return nil...
       let items = coffeeShopData.response.groups[0].items
             
-//      guard items != nil else {
-//        throw ErrorHandler.ErrorType.zeroResultsReturned
-//      }
+      guard items.count > 0 else {
+        throw ErrorHandler.ErrorType.zeroResultsReturned
+      }
       
       var coffeeShops: [CoffeeShop] = []
       
@@ -40,13 +40,10 @@ struct JSONParser {
                                     location: CLLocation(latitude: latitude, longitude: longitude),
                                     distance: distance))
       }
-      
       return (coffeeShops, warningText)
             
     } catch {
       throw ErrorHandler.ErrorType.other
     }
-      
   }
-  
 }

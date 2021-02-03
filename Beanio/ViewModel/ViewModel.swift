@@ -72,7 +72,7 @@ class ViewModel: NSObject {
 extension ViewModel: CLLocationManagerDelegate {
   
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-    print(manager.authorizationStatus)
+    refreshData()
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
