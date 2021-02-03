@@ -30,19 +30,18 @@ class FourSquareManagerTests: XCTestCase {
       "v" : "20210131", // 'Version' - an arbitrary date to be updated periodically when the app is updated.
       "section" : "coffee",
       "ll" : "51.5154856,-0.1418396"]
+
+    let generatedURL = sut.assembleURL(baseURL: baseURL, parameters: parameters)
+    XCTAssertTrue(UIApplication.shared.canOpenURL(generatedURL!))
+  }
+  
+  func testURLisValid() {
     
-//    let expectedOutput = "https://api.foursquare.com/v2/venues/explore?section=coffee&v=20210131&ll=51.5154856,-0.1418396&client_secret=3EHLQEFMBISD4HGZM1FIB1XQIDGQMI2J1QX4T5SZ12QQGAS3&client_id=44XM5RRWRON31R41GVKJTE2KA0GNTOI50HYUAFI2E5C0IQN5"
+    let urlString = "jfwebjewvawe"
     
-//    https://api.foursquare.com/v2/venues/explore?client_secret=3EHLQEFMBISD4HGZM1FIB1XQIDGQMI2J1QX4T5SZ12QQGAS3&ll=51.5154856,-0.1418396&client_id=44XM5RRWRON31R41GVKJTE2KA0GNTOI50HYUAFI2E5C0IQN5&v=20210131&section=coffee
-    
-    //https://api.foursquare.com/v2/venues/explore?section=coffee&client_secret=3EHLQEFMBISD4HGZM1FIB1XQIDGQMI2J1QX4T5SZ12QQGAS3&v=20210131&ll=51.5154856,-0.1418396&client_id=44XM5RRWRON31R41GVKJTE2KA0GNTOI50HYUAFI2E5C0IQN5
-    
-    //TODO: Need to find a way to validate this URL is working. This doesn't do anything currently.
-    XCTAssertNotNil(sut.assembleURL(baseURL: baseURL, parameters: parameters))
-    
-//    XCTAssertTrue(UIApplication.shared.canOpenURL(sut.assembleURL(baseURL: baseURL, parameters: parameters)!))
-    
-    
+    if let url = NSURL(string: urlString) {
+                print(UIApplication.shared.canOpenURL(url as URL))
+            }
   }
   
   func testDownloadVenueDataNearLocation() {
