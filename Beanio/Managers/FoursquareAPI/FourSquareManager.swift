@@ -8,7 +8,13 @@
 import Foundation
 import CoreLocation
 
-struct FourSquareManager {
+protocol FourSquareMangerDelegate: AnyObject {
+  func fourSquareManager(_ manager: FourSquareManager, didFailWithError: ErrorHandler.ErrorType)
+}
+
+class FourSquareManager {
+  
+  weak var delegate: FourSquareMangerDelegate?
   
   // MARK: - Assemble URL
   func assembleURL(baseURL: String, parameters: [String: String]) -> URL? {
@@ -20,7 +26,8 @@ struct FourSquareManager {
     return components?.url
   }
   
-  func downloadVenueDataNearLocation(location: CLLocation, completion: @escaping (Data?) -> ()) throws {
+  // MARK: - Download venues
+  func downloadVenueDataNearLocation(location: CLLocation, completion: @escaping (Data?) -> ()) {
     
     let baseURL = "https://api.foursquare.com/v2/venues/explore"
     let credentials = Credentials()
@@ -32,24 +39,18 @@ struct FourSquareManager {
                                   "section" : "coffee",
                                   "ll" : "\(location.coordinate.latitude),\(location.coordinate.longitude)"]) else {
       
-      throw ErrorHandler.ErrorType.errorAccessingTheAPI
+      delegate?.fourSquareManager(self, didFailWithError: .errorAccessingTheAPI)
+      return
     }
     
     let session = URLSession(configuration: .default)
-    //    let task = session.dataTask(with: url) { [weak self] (data, response, error) in
-    let task = session.dataTask(with: url) { (data, response, error) in
-      //        guard let self = self else { return }
+    let task = session.dataTask(with: url) { [weak self] (data, response, error) in
+      guard let self = self else { return }
       
-      guard let data = data else {
-        //          self.delegate?.didFailWithError(self, error: .errorAccessingTheAPI)
+      guard let data = data, error == nil else {
+        self.delegate?.fourSquareManager(self, didFailWithError: .errorAccessingTheAPI)
         return
       }
-      
-      guard error == nil else {
-        //          self.delegate?.didFailWithError(self, error: .errorAccessingTheAPI)
-        return
-      }
-      
       completion(data)
     }
     task.resume()

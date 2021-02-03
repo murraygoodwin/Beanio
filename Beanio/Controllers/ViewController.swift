@@ -17,7 +17,7 @@ final class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
-    tableView.backgroundColor = .white
+    tableView.backgroundColor = .lightGray
     
     viewModel.viewController = self
     viewModel.delegate = self

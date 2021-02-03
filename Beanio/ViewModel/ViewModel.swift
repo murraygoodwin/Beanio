@@ -20,8 +20,10 @@ protocol ViewModelDelegate: AnyObject {
 class ViewModel: NSObject {
   
   private let coreLocationManager = CLLocationManager()
-  weak var delegate: ViewModelDelegate?
   private let errorHandler = ErrorHandler()
+  private let fourSquareManager = FourSquareManager()
+
+  weak var delegate: ViewModelDelegate?
   var viewController: UIViewController?
   
   // MARK: - Location + venue properties
@@ -45,8 +47,9 @@ class ViewModel: NSObject {
   
   // MARK: - Refresh Data
   func refreshData() {
-
+    
     coreLocationManager.delegate = self
+    fourSquareManager.delegate = self
     
     let userLocationManager = UserLocationManager(coreLocationManager: coreLocationManager)
     
@@ -54,13 +57,13 @@ class ViewModel: NSObject {
       try userLocationManager.getCurrentLocation()
       
     } catch ErrorHandler.ErrorType.locationServicesDisabled {
-      errorHandler.presentError(errorType: .locationServicesDisabled, viewController: viewController!)
+      errorHandler.presentError(errorType: .locationServicesDisabled, viewController: viewController)
       
     } catch ErrorHandler.ErrorType.locationServicesRestricted {
-      errorHandler.presentError(errorType: .locationServicesRestricted, viewController: viewController!)
+      errorHandler.presentError(errorType: .locationServicesRestricted, viewController: viewController)
       
     } catch {
-      errorHandler.presentError(errorType: .other, viewController: viewController!)
+      errorHandler.presentError(errorType: .other, viewController: viewController)
     }
   }
 }
@@ -82,40 +85,34 @@ extension ViewModel: CLLocationManagerDelegate {
       manager.stopUpdatingLocation()
       userLocation = CLLocation(latitude: foundLocation.coordinate.latitude, longitude: foundLocation.coordinate.longitude)
       
-      let fourSquareManager = FourSquareManager()
-      
-      do {
-        try fourSquareManager.downloadVenueDataNearLocation(location: userLocation) { (data) in
-
-          //TODO: Handle this better.
-           guard let data = data else {
-             fatalError("No data returned from FourSquare API.")
-           }
-                     
-          do {
-            let jsonParser = JSONParser()
-            
-            if let parsedShops = try jsonParser.parseCoffeeShopJSON(data).coffeeShops {
-              self.coffeeShops = parsedShops.sorted(by: { $0.distance < $1.distance })
-            }
-            
-            self.warningText = try jsonParser.parseCoffeeShopJSON(data).warningText
-            
-          } catch {
-            self.errorHandler.presentError(errorType: .other, viewController: self.viewController!)
-          }
-        }
-      } catch ErrorHandler.ErrorType.errorAccessingTheAPI {
-        self.errorHandler.presentError(errorType: .errorAccessingTheAPI, viewController: self.viewController!)
+      fourSquareManager.downloadVenueDataNearLocation(location: userLocation) { (data) in
+        guard let data = data else { return }
         
-      } catch {
-        errorHandler.presentError(errorType: .other, viewController: viewController!)
+        do {
+          let jsonParser = JSONParser()
+          
+          if let parsedShops = try jsonParser.parseCoffeeShopJSON(data).coffeeShops {
+            self.coffeeShops = parsedShops.sorted(by: { $0.distance < $1.distance })
+          }
+          
+          self.warningText = try jsonParser.parseCoffeeShopJSON(data).warningText
+          
+        } catch {
+          self.errorHandler.presentError(errorType: .other, viewController: self.viewController)
+        }
       }
     }
   }
   
   //FIXME: In production, I would handle the various types of error that could be returned here (https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423786-locationmanager).
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    errorHandler.presentError(errorType: .coreLocationError, viewController: viewController!)
+    errorHandler.presentError(errorType: .coreLocationError, viewController: viewController)
+  }
+}
+
+extension ViewModel: FourSquareMangerDelegate {
+  
+  func fourSquareManager(_ manager: FourSquareManager, didFailWithError: ErrorHandler.ErrorType) {
+    errorHandler.presentError(errorType: didFailWithError, viewController: viewController)
   }
 }
