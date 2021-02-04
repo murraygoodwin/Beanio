@@ -21,7 +21,6 @@ struct JSONParser {
       
       let warningText = coffeeShopData.response.warning?.text
       
-      // TODO: Check whether this could ever be nil / zero and handle appropriately (e.g. searching in the sea)... might not even be needed as we can return nil...
       guard let items = coffeeShopData.response.groups[0].items else {
         throw ErrorHandler.ErrorType.zeroResultsReturned
       }

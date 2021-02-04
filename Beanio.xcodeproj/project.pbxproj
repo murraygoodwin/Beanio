@@ -11,9 +11,12 @@
 		6102B94125C46A4B00997E4F /* CoffeeShopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102B94025C46A4B00997E4F /* CoffeeShopData.swift */; };
 		6102B94625C46A9B00997E4F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102B94525C46A9B00997E4F /* ViewModel.swift */; };
 		613B3B8925C970F400948CAD /* VenueListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B3B8825C970F400948CAD /* VenueListingCell.swift */; };
+		61A88DF425CC1D4000B484D4 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A88DF325CC1D4000B484D4 /* ViewModelTests.swift */; };
+		61A88DFC25CC1EC700B484D4 /* UserLocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A88DFB25CC1EC700B484D4 /* UserLocationManagerTests.swift */; };
 		61ABFB1A25CAD0970067B54E /* JSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ABFB1925CAD0970067B54E /* JSONParserTests.swift */; };
 		61ABFB1E25CAD24B0067B54E /* sampleJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 61D64D6C25C81FA400B6830D /* sampleJSON.json */; };
 		61ABFB3B25CB13A90067B54E /* sampleJSONwithWarningMessage.json in Resources */ = {isa = PBXBuildFile; fileRef = 61ABFB2D25CB13280067B54E /* sampleJSONwithWarningMessage.json */; };
+		61BA5F9725CC488C007B0241 /* ErrorHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BA5F9625CC488C007B0241 /* ErrorHandlerTests.swift */; };
 		61D64D6825C81DEC00B6830D /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D64D6725C81DEC00B6830D /* JSONParser.swift */; };
 		61D64D7825C8242600B6830D /* CoffeeShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D64D7725C8242600B6830D /* CoffeeShop.swift */; };
 		61ECC01A25C454D7007F9B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ECC01925C454D7007F9B70 /* AppDelegate.swift */; };
@@ -52,8 +55,11 @@
 		6102B94525C46A9B00997E4F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		613B3B8825C970F400948CAD /* VenueListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListingCell.swift; sourceTree = "<group>"; };
 		614277CC25C9DFC100715A15 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		61A88DF325CC1D4000B484D4 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
+		61A88DFB25CC1EC700B484D4 /* UserLocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManagerTests.swift; sourceTree = "<group>"; };
 		61ABFB1925CAD0970067B54E /* JSONParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParserTests.swift; sourceTree = "<group>"; };
 		61ABFB2D25CB13280067B54E /* sampleJSONwithWarningMessage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleJSONwithWarningMessage.json; sourceTree = "<group>"; };
+		61BA5F9625CC488C007B0241 /* ErrorHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerTests.swift; sourceTree = "<group>"; };
 		61D64D6725C81DEC00B6830D /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		61D64D6C25C81FA400B6830D /* sampleJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleJSON.json; sourceTree = "<group>"; };
 		61D64D7725C8242600B6830D /* CoffeeShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShop.swift; sourceTree = "<group>"; };
@@ -142,7 +148,10 @@
 			isa = PBXGroup;
 			children = (
 				61ECC03025C454D8007F9B70 /* FourSquareManagerTests.swift */,
+				61BA5F9625CC488C007B0241 /* ErrorHandlerTests.swift */,
+				61A88DFB25CC1EC700B484D4 /* UserLocationManagerTests.swift */,
 				61ABFB1925CAD0970067B54E /* JSONParserTests.swift */,
+				61A88DF325CC1D4000B484D4 /* ViewModelTests.swift */,
 				61ABFB2D25CB13280067B54E /* sampleJSONwithWarningMessage.json */,
 				61D64D6C25C81FA400B6830D /* sampleJSON.json */,
 				61ECC03225C454D8007F9B70 /* Info.plist */,
@@ -367,6 +376,9 @@
 			files = (
 				61ABFB1A25CAD0970067B54E /* JSONParserTests.swift in Sources */,
 				61ECC03125C454D8007F9B70 /* FourSquareManagerTests.swift in Sources */,
+				61A88DF425CC1D4000B484D4 /* ViewModelTests.swift in Sources */,
+				61BA5F9725CC488C007B0241 /* ErrorHandlerTests.swift in Sources */,
+				61A88DFC25CC1EC700B484D4 /* UserLocationManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,14 +10,15 @@ import CoreLocation
 
 final class ViewController: UIViewController {
   
-  private var viewModel = ViewModel()
+  var viewModel = ViewModel()
   @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
   @IBOutlet weak var loadingOverlay: UIView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var warningMessageView: UIView!
   @IBOutlet weak var warningText: UILabel!
   @IBOutlet var welcomeOverlay: UIView!
-    
+  @IBOutlet weak var updateLocationBarButton: UIBarButtonItem!
+  
   enum ViewMode {
     case standby, loading, welcome
   }
@@ -26,11 +27,15 @@ final class ViewController: UIViewController {
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.backgroundColor = .clear
+    
+    // Identifiers to enable testing...
     tableView.accessibilityIdentifier = "coffeeVenuesTableView"
     loadingIndicator.accessibilityIdentifier = "loadingIndicator"
+    updateLocationBarButton.accessibilityIdentifier = "updateLocationBarButton"
     
     viewModel.viewController = self
     viewModel.delegate = self
+    
     warningText.text = viewModel.warningText
     
     if viewModel.coffeeShops.count == 0 {

@@ -27,7 +27,7 @@ I broke the project down into steps on a Trello board, which allowed me to track
 18. Write README.md
 
 
-## Notes on User Interface Design
+## User Interface Design
 Please note that I have not focused on the user interface in this example, since I have an existing published 'coffee shop listing app' available on the App Store, which I think gives a better indication of my abilities around UI design. It seemed silly to duplicate effort for a demo project where there is so much overlap.
 
 ARTISAN is available here:
@@ -46,3 +46,9 @@ In addition to a simple tableView, ARTISAN also incorporates functionality to:
 I recently refactored ARTISAN around MVVM and I intend to style the tableView a bit more than it is currently in the coming weeks.
 
 I have included data for latitude and longitude in the listings objects within this demo to allow for that functionality to be extended.
+
+
+## Test Coverage
+
+NOTESSSSSSSSS
+Limitations around testing Location Manager.

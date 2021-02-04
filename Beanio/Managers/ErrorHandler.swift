@@ -10,7 +10,7 @@ import UIKit
 
 final class ErrorHandler {
   
-  enum ErrorType: Error {
+  enum ErrorType: Error, CaseIterable {
     case coreLocationError
     case errorAccessingTheAPI
     case locationServicesDisabled

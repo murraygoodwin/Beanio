@@ -122,6 +122,7 @@
                         <outlet property="loadingIndicator" destination="uM2-Pb-hQ7" id="JDf-6B-sx6"/>
                         <outlet property="loadingOverlay" destination="gag-bf-r81" id="amS-1L-zhR"/>
                         <outlet property="tableView" destination="w4v-oB-YPh" id="qEk-QU-ebq"/>
+                        <outlet property="updateLocationBarButton" destination="hH0-Ir-rEW" id="gCb-In-1k8"/>
                         <outlet property="warningMessageView" destination="nL1-8d-7LD" id="92B-Ki-GNU"/>
                         <outlet property="warningText" destination="bfH-eu-wN5" id="4bi-GR-0EZ"/>
                         <outlet property="welcomeOverlay" destination="fFB-ap-IOo" id="deh-ea-g61"/>
