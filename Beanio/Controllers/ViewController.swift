@@ -15,9 +15,10 @@ final class ViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var warningMessageView: UIView!
   @IBOutlet weak var warningText: UILabel!
+  @IBOutlet var welcomeOverlay: UIView!
     
   enum ViewMode {
-    case standby, loading
+    case standby, loading, welcome
   }
     
   override func viewDidLoad() {
@@ -28,22 +29,53 @@ final class ViewController: UIViewController {
     viewModel.viewController = self
     viewModel.delegate = self
     warningText.text = viewModel.warningText
+    
+    if viewModel.coffeeShops.count == 0 {
+      updateUI(mode: .welcome)
+    }
   }
   
-  // MARK: - Navigation Bar Actions
+  // MARK: - User Actions
   @IBAction func getLocationButtonPressed(_ sender: UIBarButtonItem) {
     updateUI(mode: .loading)
     viewModel.refreshData()
   }
   
+  @IBAction func searchNearbyButtonPressed(_ sender: UIButton) {
+    updateUI(mode: .loading)
+    viewModel.refreshData()
+  }
+  
+  // MARK: - UI updates
   private func updateUI(mode: ViewMode) {
     
     DispatchQueue.main.async {
       switch mode {
+      
+      case .welcome:
+        self.view.addSubview(self.welcomeOverlay)
+        self.welcomeOverlay.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+          self.welcomeOverlay.heightAnchor.constraint(equalTo: self.view.heightAnchor),
+          self.welcomeOverlay.widthAnchor.constraint(equalTo: self.view.widthAnchor)])
+        
+        self.welcomeOverlay.center = self.view.center
+        
       case .standby:
-        self.loadingOverlay.isHidden = true
+        self.loadingOverlay.removeFromSuperview()
+        
       case .loading:
-        self.loadingOverlay.isHidden = false
+        self.welcomeOverlay.removeFromSuperview()
+        
+        self.view.addSubview(self.loadingOverlay)
+        self.loadingOverlay.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+          self.loadingOverlay.heightAnchor.constraint(equalTo: self.view.heightAnchor),
+          self.loadingOverlay.widthAnchor.constraint(equalTo: self.view.widthAnchor)])
+        
+        self.loadingOverlay.center = self.view.center
       }
     }
   }
@@ -72,7 +104,7 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: ViewModelDelegate {
   
   func viewModel(_ manager: ViewModel, didUpdateUserLocation: CLLocation) {
-    // Placeholder to allow for a map update.
+    // Placeholder to allow for a map update if included.
   }
   
   func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShop]) {
