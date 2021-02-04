@@ -9,7 +9,7 @@ import XCTest
 import CoreLocation
 @testable import Beanio
 
-class FourSquareManagerTests: XCTestCase {
+final class FourSquareManagerTests: XCTestCase {
   
   var sut: FourSquareManager!
   
@@ -37,11 +37,17 @@ class FourSquareManagerTests: XCTestCase {
   
   func testDownloadVenueDataNearLocation() {
     
+    let expectation = self.expectation(description: "downLoadingVenueData")
+    var data: Data?
+    
     let testLocation = CLLocation(latitude: 51.5154856, longitude: -0.1418396)
   
-    sut.downloadVenueDataNearLocation(location: testLocation) { (data) in
-      // FIXME: I have been trying (and failing!) to find a way to test for nil data values being retured (e.g. in case of loss of a search with no connectivity), but it always seems to pass. Any feedback welcome!
-      XCTAssert(data?.isEmpty == false)
+    sut.downloadVenueDataNearLocation(location: testLocation) {
+      data = $0
+      expectation.fulfill()
     }
+    
+    waitForExpectations(timeout: 5, handler: nil)
+    XCTAssertNotNil(data)
   }
 }

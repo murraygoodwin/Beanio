@@ -8,7 +8,7 @@
 import XCTest
 @testable import Beanio
 
-class JSONParserTests: XCTestCase {
+final class JSONParserTests: XCTestCase {
   
   var sut: JSONParser!
   

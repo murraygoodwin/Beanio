@@ -119,6 +119,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loadingIndicator" destination="uM2-Pb-hQ7" id="JDf-6B-sx6"/>
                         <outlet property="loadingOverlay" destination="gag-bf-r81" id="amS-1L-zhR"/>
                         <outlet property="tableView" destination="w4v-oB-YPh" id="qEk-QU-ebq"/>
                         <outlet property="warningMessageView" destination="nL1-8d-7LD" id="92B-Ki-GNU"/>
@@ -155,6 +156,7 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5Q-HZ-G0O">
                             <rect key="frame" x="45" y="307" width="150" height="50"/>
+                            <accessibility key="accessibilityConfiguration" identifier="searchNearbyWelcomeButton"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="gT7-Ou-PCJ"/>
                                 <constraint firstAttribute="height" constant="50" id="oyG-68-Exv"/>

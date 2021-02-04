@@ -11,6 +11,7 @@ import CoreLocation
 final class ViewController: UIViewController {
   
   private var viewModel = ViewModel()
+  @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
   @IBOutlet weak var loadingOverlay: UIView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var warningMessageView: UIView!
@@ -25,6 +26,8 @@ final class ViewController: UIViewController {
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.backgroundColor = .clear
+    tableView.accessibilityIdentifier = "coffeeVenuesTableView"
+    loadingIndicator.accessibilityIdentifier = "loadingIndicator"
     
     viewModel.viewController = self
     viewModel.delegate = self
