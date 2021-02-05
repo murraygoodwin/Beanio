@@ -89,6 +89,14 @@ final class ViewController: UIViewController {
   }
 }
 
+// MARK: - Error Handler Delegate
+extension ViewController: ErrorHandlerDelegate {
+  
+  func errorAcknowledged() {
+    updateUI(mode: .welcome)
+  }
+}
+
 // MARK: - TableView Datasource
 extension ViewController: UITableViewDataSource {
   

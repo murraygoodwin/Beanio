@@ -50,6 +50,7 @@ final class ViewModel: NSObject {
     
     coreLocationManager.delegate = self
     fourSquareManager.delegate = self
+    errorHandler.delegate = viewController as? ErrorHandlerDelegate
     
     let userLocationManager = UserLocationManager(coreLocationManager: coreLocationManager)
     

@@ -5,6 +5,10 @@
 //  Created by Murray Goodwin on 29/01/2021.
 //
 
+protocol ErrorHandlerDelegate: NSObject {
+  func errorAcknowledged()
+}
+
 import Foundation
 import UIKit
 
@@ -18,6 +22,8 @@ final class ErrorHandler {
     case zeroResultsReturned
     case other
   }
+  
+  weak var delegate: ErrorHandlerDelegate?
     
   func presentError(errorType: ErrorType,
                    viewController: UIViewController?) {
@@ -57,7 +63,9 @@ final class ErrorHandler {
     if let _ = errorMessage, let errorTitle = errorTitle {
       
       let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "Okay", style: .default))
+      alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { action in
+        self.delegate?.errorAcknowledged()
+      }))
       
       DispatchQueue.main.async {
         viewController.present(alert, animated: true)
