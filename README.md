@@ -45,7 +45,7 @@ In addition to a simple tableView as used in this demo, ARTISAN also incorporate
 - swipe down to refresh
 - get directions to each venue
 - view additional metadata for each listing, including Reviews, Photos and Open/Closed status
-- sound feedback on user interactions
+- receive sound feedback on user interactions
 
 I recently refactored ARTISAN around MVVM and I intend to work on the styling of the tableView a bit more in the coming weeks.
 
