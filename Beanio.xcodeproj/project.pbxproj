@@ -12,6 +12,7 @@
 		6102B94625C46A9B00997E4F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102B94525C46A9B00997E4F /* ViewModel.swift */; };
 		613B3B8925C970F400948CAD /* VenueListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B3B8825C970F400948CAD /* VenueListingCell.swift */; };
 		6196838425CD87C60037BED0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196837925CD84F90037BED0 /* CustomButton.swift */; };
+		6196838925CD8E7F0037BED0 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196838825CD8E7F0037BED0 /* NavigationController.swift */; };
 		61A88DF425CC1D4000B484D4 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A88DF325CC1D4000B484D4 /* ViewModelTests.swift */; };
 		61A88DFC25CC1EC700B484D4 /* UserLocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A88DFB25CC1EC700B484D4 /* UserLocationManagerTests.swift */; };
 		61ABFB1A25CAD0970067B54E /* JSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ABFB1925CAD0970067B54E /* JSONParserTests.swift */; };
@@ -58,6 +59,7 @@
 		613B3B8825C970F400948CAD /* VenueListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListingCell.swift; sourceTree = "<group>"; };
 		614277CC25C9DFC100715A15 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6196837925CD84F90037BED0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		6196838825CD8E7F0037BED0 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		61A88DF325CC1D4000B484D4 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 		61A88DFB25CC1EC700B484D4 /* UserLocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManagerTests.swift; sourceTree = "<group>"; };
 		61ABFB1925CAD0970067B54E /* JSONParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParserTests.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				61ECC01D25C454D7007F9B70 /* ViewController.swift */,
+				6196838825CD8E7F0037BED0 /* NavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				6102B94125C46A4B00997E4F /* CoffeeShopData.swift in Sources */,
 				613B3B8925C970F400948CAD /* VenueListingCell.swift in Sources */,
 				61ECC01E25C454D7007F9B70 /* ViewController.swift in Sources */,
+				6196838925CD8E7F0037BED0 /* NavigationController.swift in Sources */,
 				61ECC01A25C454D7007F9B70 /* AppDelegate.swift in Sources */,
 				61ECC05825C45AC8007F9B70 /* UserLocationManager.swift in Sources */,
 				6102B93725C464F300997E4F /* FourSquareManager.swift in Sources */,
@@ -564,7 +568,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.murraygoodwin.Beanio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -583,7 +587,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.murraygoodwin.Beanio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

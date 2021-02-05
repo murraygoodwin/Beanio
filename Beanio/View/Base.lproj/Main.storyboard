@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--BEANIO-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Beanio" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,17 +20,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2pp-ie-shL">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZi-yv-CQd" userLabel="Separator Bar">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                        <color key="backgroundColor" name="Brand4"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="GrX-qo-3mm"/>
+                                        </constraints>
+                                    </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nL1-8d-7LD" userLabel="Warning Message View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="1" width="414" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning: We didn't find many coffee shops in your area." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bfH-eu-wN5" userLabel="Warning Message">
-                                                <rect key="frame" x="8" y="8" width="398" height="41"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="8" y="8" width="398" height="18"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="bfH-eu-wN5" secondAttribute="trailing" constant="8" id="HSF-Zk-c2G"/>
                                             <constraint firstItem="bfH-eu-wN5" firstAttribute="top" secondItem="nL1-8d-7LD" secondAttribute="top" constant="8" id="KLZ-py-oS4"/>
@@ -39,8 +46,8 @@
                                             <constraint firstAttribute="height" constant="70" id="fL4-ft-Zry"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w4v-oB-YPh">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w4v-oB-YPh">
+                                        <rect key="frame" x="0.0" y="1" width="414" height="773"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="sectionIndexBackgroundColor" systemColor="systemTealColor"/>
                                         <prototypes>
@@ -61,7 +68,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Aye-AO-vsk" userLabel="Distance">
-                                                                    <rect key="frame" x="244" y="22" width="100" height="18"/>
+                                                                    <rect key="frame" x="244" y="23" width="100" height="18"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="l0p-3i-cCl"/>
                                                                     </constraints>
@@ -78,7 +85,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="Aye-AO-vsk" secondAttribute="trailing" constant="20" id="aoW-ee-8KT"/>
                                                                 <constraint firstItem="Aye-AO-vsk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cGV-Vd-KoW" secondAttribute="trailing" constant="20" id="mH6-iJ-XTt"/>
                                                                 <constraint firstItem="cGV-Vd-KoW" firstAttribute="leading" secondItem="OLv-Q5-UbW" secondAttribute="leading" constant="20" id="obL-8K-0Eq"/>
-                                                                <constraint firstItem="Aye-AO-vsk" firstAttribute="top" secondItem="OLv-Q5-UbW" secondAttribute="top" constant="22" id="vgt-Gm-BtU"/>
+                                                                <constraint firstItem="Aye-AO-vsk" firstAttribute="top" secondItem="OLv-Q5-UbW" secondAttribute="top" constant="23" id="vgt-Gm-BtU"/>
                                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Aye-AO-vsk" secondAttribute="bottom" constant="20" id="zLw-nx-Y1U"/>
                                                             </constraints>
                                                         </view>
@@ -112,8 +119,9 @@
                             <constraint firstItem="2pp-ie-shL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gsR-xi-4Y6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Zaq-cf-i0i">
-                        <barButtonItem key="leftBarButtonItem" title="Get Location Button" image="location.fill" catalog="system" id="hH0-Ir-rEW">
+                    <navigationItem key="navigationItem" title="BEANIO" id="Zaq-cf-i0i">
+                        <barButtonItem key="leftBarButtonItem" title="Get Location Button" image="location" catalog="system" id="hH0-Ir-rEW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="getLocationButtonPressed:" destination="BYZ-38-t0r" id="ciy-en-Uh8"/>
                             </connections>
@@ -147,20 +155,26 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" id="fFB-ap-IOo" userLabel="Welcome Overlay">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="382"/>
+                    <rect key="frame" x="0.0" y="0.0" width="366" height="655"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="DdH-HG-Iu6">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="382"/>
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="655"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Beanio" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SiA-5p-WK9">
-                            <rect key="frame" x="20" y="194" width="200" height="95.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME TO" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SiA-5p-WK9" userLabel="WELCOME TO">
+                            <rect key="frame" x="40" y="131" width="286" height="58"/>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="50"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEANIO" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gxb-Fi-mZ0" userLabel="BEANIO">
+                            <rect key="frame" x="40" y="189" width="286" height="83.5"/>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="72"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5Q-HZ-G0O" customClass="CustomButton" customModule="Beanio" customModuleProvider="target">
-                            <rect key="frame" x="20" y="297" width="200" height="60"/>
+                            <rect key="frame" x="20" y="570" width="326" height="60"/>
                             <color key="backgroundColor" name="AccentColor"/>
                             <accessibility key="accessibilityConfiguration" identifier="searchNearbyWelcomeButton"/>
                             <constraints>
@@ -169,6 +183,7 @@
                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                             <state key="normal" title="SEARCH NEARBY">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
                                 <action selector="searchNearbyButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bhl-dv-nqj"/>
@@ -178,17 +193,20 @@
                     <viewLayoutGuide key="safeArea" id="NXB-EJ-1ll"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="SiA-5p-WK9" firstAttribute="top" secondItem="NXB-EJ-1ll" secondAttribute="top" constant="150" id="2Qi-ZW-Lnq"/>
-                        <constraint firstAttribute="trailing" secondItem="SiA-5p-WK9" secondAttribute="trailing" constant="20" id="3Qt-2m-a8A"/>
-                        <constraint firstItem="NXB-EJ-1ll" firstAttribute="trailing" secondItem="l5Q-HZ-G0O" secondAttribute="trailing" constant="20" id="3ap-fP-PUO"/>
+                        <constraint firstAttribute="trailing" secondItem="SiA-5p-WK9" secondAttribute="trailing" constant="40" id="3Qt-2m-a8A"/>
+                        <constraint firstItem="NXB-EJ-1ll" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="l5Q-HZ-G0O" secondAttribute="trailing" constant="20" id="3ap-fP-PUO"/>
                         <constraint firstItem="DdH-HG-Iu6" firstAttribute="trailing" secondItem="fFB-ap-IOo" secondAttribute="trailing" id="3mv-yF-A78"/>
                         <constraint firstItem="DdH-HG-Iu6" firstAttribute="top" secondItem="fFB-ap-IOo" secondAttribute="top" id="89U-Fb-00M"/>
+                        <constraint firstItem="gxb-Fi-mZ0" firstAttribute="leading" secondItem="NXB-EJ-1ll" secondAttribute="leading" constant="40" id="DSZ-9l-OEs"/>
                         <constraint firstItem="NXB-EJ-1ll" firstAttribute="bottom" secondItem="l5Q-HZ-G0O" secondAttribute="bottom" constant="25" id="M5e-dz-yu0"/>
                         <constraint firstAttribute="bottom" secondItem="DdH-HG-Iu6" secondAttribute="bottom" id="Ra5-nu-2fa"/>
-                        <constraint firstItem="SiA-5p-WK9" firstAttribute="leading" secondItem="NXB-EJ-1ll" secondAttribute="leading" constant="20" id="SoZ-f7-KcF"/>
+                        <constraint firstItem="gxb-Fi-mZ0" firstAttribute="top" secondItem="SiA-5p-WK9" secondAttribute="bottom" id="RfQ-Vm-jpB"/>
+                        <constraint firstItem="SiA-5p-WK9" firstAttribute="leading" secondItem="NXB-EJ-1ll" secondAttribute="leading" constant="40" id="SoZ-f7-KcF"/>
                         <constraint firstItem="l5Q-HZ-G0O" firstAttribute="leading" secondItem="NXB-EJ-1ll" secondAttribute="leading" constant="20" id="WfV-cH-Xeu"/>
                         <constraint firstItem="l5Q-HZ-G0O" firstAttribute="centerX" secondItem="fFB-ap-IOo" secondAttribute="centerX" id="XuE-Fo-9qA"/>
+                        <constraint firstItem="SiA-5p-WK9" firstAttribute="top" secondItem="NXB-EJ-1ll" secondAttribute="bottom" multiplier="0.2" id="b0k-HQ-JnP"/>
                         <constraint firstItem="DdH-HG-Iu6" firstAttribute="leading" secondItem="fFB-ap-IOo" secondAttribute="leading" id="gaZ-zr-3Jw"/>
+                        <constraint firstItem="NXB-EJ-1ll" firstAttribute="trailing" secondItem="gxb-Fi-mZ0" secondAttribute="trailing" constant="40" id="q9R-yS-d3o"/>
                     </constraints>
                 </view>
             </objects>
@@ -197,11 +215,16 @@
         <!--Navigation Controller-->
         <scene sceneID="tGX-W2-m1Z">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Emx-Bz-PkB" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Emx-Bz-PkB" customClass="NavigationController" customModule="Beanio" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KVc-M0-nkf">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Brand1"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -219,8 +242,8 @@
         </designable>
     </designables>
     <resources>
-        <image name="Background" width="960" height="632"/>
-        <image name="location.fill" catalog="system" width="128" height="121"/>
+        <image name="Background" width="1632" height="2448"/>
+        <image name="location" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.7495094538" green="0.022183984520000002" blue="0.2551630735" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -230,14 +253,14 @@
         <namedColor name="Brand2">
             <color red="0.42796283959999998" green="0.12358299640000001" blue="0.21451726560000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="Brand4">
+            <color red="0.23468281963084003" green="0.068415123529443622" blue="0.11881930224217752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

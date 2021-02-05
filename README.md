@@ -1,7 +1,10 @@
 #  Beanio
 
-## FourSquare credentials
-Please add your FourSquare credentials in the 'Credentials.swift' file.
+## Overview
+Beanio is a demo of a simple coffee shop finding app, completed for a job application, that pulls nearby coffee shops from the FourSquare API and presents them in an MVP style interface.
+
+## Adding your FourSquare credentials
+To test the demo, please add your own FourSquare credentials in the 'Credentials.swift' file under Managers > FoursquareAPI > Credentials.swift.
 
 ## Approach
 I broke the project down into steps on a Trello board, which allowed me to track progress over time and prioritise my work accordingly.
@@ -25,30 +28,37 @@ I broke the project down into steps on a Trello board, which allowed me to track
 16. Write UI tests
 17. Complete review checklist
 18. Write README.md
-
+19. Re-add Credentials.swift to repo
 
 ## User Interface Design
-Please note that I have not focused on the user interface in this example, since I have an existing published 'coffee shop listing app' available on the App Store, which I think gives a better indication of my abilities around UI design. It seemed silly to duplicate effort for a demo project where there is so much overlap.
+Please note that I have not focused extensively on the user interface in this example, since I have an existing published 'coffee shop listing app' available on the App Store, which I think gives a better indication of my abilities around UI design. It seemed silly to duplicate effort for a demo project where there is so much overlap.
 
 ARTISAN is available here:
 https://apps.apple.com/us/app/artisan-cafes-coffee-nearby/id1521699791
 
-ARTISAN uses much the same approach as in this project – although it uses the Google Places and Maps APIs in place of FourSquare. I have given a lot of thought to the user interface, journeys and experience, so it seemed more sensible to point you to that app instead.
+ARTISAN uses much the same approach as in this project – although it uses the Google Places and Maps APIs in place of FourSquare. I have given a lot of thought to the user interface, journeys and experience there, so it seemed more sensible to point you to that app instead.
 
-In addition to a simple tableView, ARTISAN also incorporates functionality to: 
+In addition to a simple tableView as used in this demo, ARTISAN also incorporates functionality to: 
 - overlay search results onto a map
 - allow users to tap each listing to move the map
 - allow users to tap the map pointers to move the table
 - swipe down to refresh
 - get directions to each venue
 - view additional metadata for each listing, including Reviews, Photos and Open/Closed status
+- sound feedback on user interactions
 
-I recently refactored ARTISAN around MVVM and I intend to style the tableView a bit more than it is currently in the coming weeks.
+I recently refactored ARTISAN around MVVM and I intend to work on the styling of the tableView a bit more in the coming weeks.
 
-I have included data for latitude and longitude in the listings objects within this demo to allow for that functionality to be extended.
+I have included data for latitude and longitude in the listings objects within this demo, to allow for that functionality to be extended.
 
 
 ## Test Coverage
+Test coverage currently stands at 91.4%. I experienced limitations around testing various Location Manager permissions scenarios, which I would like to explore with more time.
 
-NOTESSSSSSSSS
-Limitations around testing Location Manager.
+
+## Testing 'Warning Messages'
+The Foursquare API returns 'warning messages' in certain scenarios (e.g. low numbers of results).
+
+You can test this implementation by searching in an area such as: 
+- Latitude: 50.245088
+- Longitude: -31.867842
