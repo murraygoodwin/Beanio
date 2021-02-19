@@ -32,8 +32,7 @@ final class ViewController: UIViewController {
     tableView.accessibilityIdentifier = "coffeeVenuesTableView"
     loadingIndicator.accessibilityIdentifier = "loadingIndicator"
     updateLocationBarButton.accessibilityIdentifier = "updateLocationBarButton"
-    
-    viewModel.viewController = self
+
     viewModel.delegate = self
     
     warningText.text = viewModel.warningText
@@ -119,6 +118,11 @@ extension ViewController: UITableViewDataSource {
 // MARK: - ViewModel Delegate
 extension ViewController: ViewModelDelegate {
   
+  func viewModel(_ manager: ViewModel, didFailWithError: ErrorHandler.ErrorType) {
+    let errorHandler = ErrorHandler(delegate: self)
+    errorHandler.presentError(errorType: didFailWithError, viewController: self)
+  }
+    
   func viewModel(_ manager: ViewModel, didUpdateUserLocation: CLLocation) {
     // Placeholder to allow for a map update if included.
   }

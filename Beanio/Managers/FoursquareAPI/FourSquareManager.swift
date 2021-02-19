@@ -47,7 +47,7 @@ final class FourSquareManager {
         return
       }
       
-//      print(url)
+      print(url)
       
       let session = URLSession(configuration: .default)
       let task = session.dataTask(with: url) { [weak self] (data, response, error) in

@@ -5,8 +5,6 @@
 //  Created by Murray Goodwin on 29/01/2021.
 //
 
-//FIXME: Remove force-unwrapping of viewController in Error Handler...
-
 import Foundation
 import CoreLocation
 import UIKit
@@ -15,16 +13,15 @@ protocol ViewModelDelegate: AnyObject {
   func viewModel(_ manager: ViewModel, didUpdateUserLocation: CLLocation)
   func viewModel(_ manager: ViewModel, didUpdateCoffeeShops: [CoffeeShop])
   func viewModel(_ manager: ViewModel, didUpdateWarningText: String?)
+  func viewModel(_ manager: ViewModel, didFailWithError: ErrorHandler.ErrorType)
 }
 
 final class ViewModel: NSObject {
   
   private let coreLocationManager = CLLocationManager()
-  private let errorHandler = ErrorHandler()
   private let fourSquareManager = FourSquareManager()
 
   weak var delegate: ViewModelDelegate?
-  var viewController: UIViewController?
   
   // MARK: - Location + venue properties
   var userLocation: CLLocation = CLLocation(latitude: 51.5154856, longitude: -0.1418396) {
@@ -50,7 +47,6 @@ final class ViewModel: NSObject {
     
     coreLocationManager.delegate = self
     fourSquareManager.delegate = self
-    errorHandler.delegate = viewController as? ErrorHandlerDelegate
     
     let userLocationManager = UserLocationManager(coreLocationManager: coreLocationManager)
     
@@ -58,13 +54,13 @@ final class ViewModel: NSObject {
       try userLocationManager.getCurrentLocation()
       
     } catch ErrorHandler.ErrorType.locationServicesDisabled {
-      errorHandler.presentError(errorType: .locationServicesDisabled, viewController: viewController)
+      delegate?.viewModel(self, didFailWithError: .locationServicesDisabled)
       
     } catch ErrorHandler.ErrorType.locationServicesRestricted {
-      errorHandler.presentError(errorType: .locationServicesRestricted, viewController: viewController)
+      delegate?.viewModel(self, didFailWithError: .locationServicesRestricted)
       
     } catch {
-      errorHandler.presentError(errorType: .other, viewController: viewController)
+      delegate?.viewModel(self, didFailWithError: .other)
     }
   }
 }
@@ -99,7 +95,7 @@ extension ViewModel: CLLocationManagerDelegate {
           self.warningText = try jsonParser.parseCoffeeShopJSON(data).warningText
           
         } catch {
-          self.errorHandler.presentError(errorType: .other, viewController: self.viewController)
+          self.delegate?.viewModel(self, didFailWithError: .locationServicesDisabled)
         }
       }
     }
@@ -107,7 +103,7 @@ extension ViewModel: CLLocationManagerDelegate {
   
   //FIXME: In production, I would handle the various types of error that could be returned here (https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423786-locationmanager).
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    errorHandler.presentError(errorType: .coreLocationError, viewController: viewController)
+    delegate?.viewModel(self, didFailWithError: .coreLocationError)
   }
 }
 
@@ -115,6 +111,6 @@ extension ViewModel: CLLocationManagerDelegate {
 extension ViewModel: FourSquareMangerDelegate {
   
   func fourSquareManager(_ manager: FourSquareManager, didFailWithError: ErrorHandler.ErrorType) {
-    errorHandler.presentError(errorType: didFailWithError, viewController: viewController)
+    delegate?.viewModel(self, didFailWithError: didFailWithError)
   }
 }

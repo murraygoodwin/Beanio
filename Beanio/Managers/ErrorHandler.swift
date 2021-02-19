@@ -24,6 +24,10 @@ final class ErrorHandler {
   }
   
   weak var delegate: ErrorHandlerDelegate?
+  
+  init(delegate: ErrorHandlerDelegate) {
+    self.delegate = delegate
+  }
     
   func presentError(errorType: ErrorType,
                    viewController: UIViewController?) {
