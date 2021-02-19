@@ -18,8 +18,13 @@ protocol ViewModelDelegate: AnyObject {
 
 final class ViewModel: NSObject {
   
-  private let coreLocationManager = CLLocationManager()
-  private let fourSquareManager = FourSquareManager()
+  private let coreLocationManager: CLLocationManager
+  private let fourSquareManager: FourSquareManager
+  
+  init(coreLocationManager: CLLocationManager, fourSquareManager: FourSquareManager) {
+    self.coreLocationManager = coreLocationManager
+    self.fourSquareManager = fourSquareManager
+  }
 
   weak var delegate: ViewModelDelegate?
   

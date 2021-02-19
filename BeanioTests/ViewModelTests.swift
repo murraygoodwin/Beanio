@@ -14,7 +14,8 @@ class ViewModelTests: XCTestCase {
   var sut: ViewModel!
 
     override func setUpWithError() throws {
-        sut = ViewModel()
+      sut = ViewModel(coreLocationManager: CLLocationManager(),
+                      fourSquareManager: FourSquareManager())
     }
 
     override func tearDownWithError() throws {

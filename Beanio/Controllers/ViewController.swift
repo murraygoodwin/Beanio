@@ -10,7 +10,9 @@ import CoreLocation
 
 final class ViewController: UIViewController {
   
-  var viewModel = ViewModel()
+  var viewModel = ViewModel(coreLocationManager: CLLocationManager(),
+                            fourSquareManager: FourSquareManager())
+  
   @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
   @IBOutlet weak var loadingOverlay: UIView!
   @IBOutlet weak var tableView: UITableView!
