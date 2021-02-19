@@ -11,6 +11,7 @@ import XCTest
 class ErrorHandlerTests: XCTestCase {
   
   var sut: ErrorHandler!
+  let viewController = UIViewController()
   
   override func setUpWithError() throws {
     sut = ErrorHandler()
@@ -25,7 +26,7 @@ class ErrorHandlerTests: XCTestCase {
   }
   
   func testPresentErrors() throws {
-    let viewController = UIViewController()
+
     
     for errorType in ErrorHandler.ErrorType.allCases {
       sut.presentError(errorType: errorType, viewController: viewController)

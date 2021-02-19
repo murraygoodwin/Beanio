@@ -22,19 +22,21 @@ final class ViewController: UIViewController {
   enum ViewMode {
     case standby, loading, welcome
   }
+  
+  let errorHandler = ErrorHandler()
     
   override func viewDidLoad() {
     super.viewDidLoad()
+    errorHandler.delegate = self
     tableView.dataSource = self
     tableView.backgroundColor = .clear
+    viewModel.delegate = self
     
     // Identifiers to enable testing...
     tableView.accessibilityIdentifier = "coffeeVenuesTableView"
     loadingIndicator.accessibilityIdentifier = "loadingIndicator"
     updateLocationBarButton.accessibilityIdentifier = "updateLocationBarButton"
 
-    viewModel.delegate = self
-    
     warningText.text = viewModel.warningText
     
     if viewModel.coffeeShops.count == 0 {
@@ -119,7 +121,6 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: ViewModelDelegate {
   
   func viewModel(_ manager: ViewModel, didFailWithError: ErrorHandler.ErrorType) {
-    let errorHandler = ErrorHandler(delegate: self)
     errorHandler.presentError(errorType: didFailWithError, viewController: self)
   }
     
